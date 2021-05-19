@@ -101,7 +101,7 @@ async fn return_stream() {
 
 #[tokio::test]
 async fn consume_channel() {
-    let (mut tx, mut rx) = mpsc::channel(10);
+    let (tx, mut rx) = mpsc::channel(10);
 
     let s = stream! {
         while let Some(v) = rx.recv().await {
@@ -156,6 +156,20 @@ async fn stream_in_stream() {
 
     let values: Vec<_> = s.collect().await;
     assert_eq!(3, values.len());
+}
+
+#[tokio::test]
+async fn yield_non_unpin_value() {
+    let s: Vec<_> = stream! {
+        for i in 0..3 {
+            yield async move { i };
+        }
+    }
+    .buffered(1)
+    .collect()
+    .await;
+
+    assert_eq!(s, vec![0, 1, 2]);
 }
 
 #[test]
