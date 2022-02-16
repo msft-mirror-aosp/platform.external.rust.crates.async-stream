@@ -33,7 +33,7 @@ thread_local!(static STORE: Cell<*mut ()> = Cell::new(ptr::null_mut()));
 
 // ===== impl Sender =====
 
-impl<T> Sender<T> {
+impl<T: Unpin> Sender<T> {
     pub fn send(&mut self, value: T) -> impl Future<Output = ()> {
         Send { value: Some(value) }
     }
@@ -43,9 +43,7 @@ struct Send<T> {
     value: Option<T>,
 }
 
-impl<T> Unpin for Send<T> {}
-
-impl<T> Future for Send<T> {
+impl<T: Unpin> Future for Send<T> {
     type Output = ();
 
     fn poll(mut self: Pin<&mut Self>, _cx: &mut Context<'_>) -> Poll<()> {
