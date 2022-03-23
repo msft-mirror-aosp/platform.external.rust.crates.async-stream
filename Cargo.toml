@@ -13,16 +13,16 @@
 [package]
 edition = "2018"
 name = "async-stream"
-version = "0.3.2"
+version = "0.3.0"
 authors = ["Carl Lerche <me@carllerche.com>"]
 description = "Asynchronous streams using async & await notation"
 homepage = "https://github.com/tokio-rs/async-stream"
-documentation = "https://docs.rs/async-stream"
+documentation = "https://docs.rs/async-stream/0.3.0/async-stream"
 readme = "README.md"
 license = "MIT"
 repository = "https://github.com/tokio-rs/async-stream"
 [dependencies.async-stream-impl]
-version = "=0.3.2"
+version = "0.3.0"
 
 [dependencies.futures-core]
 version = "0.3"
@@ -30,11 +30,11 @@ version = "0.3"
 version = "0.3"
 
 [dev-dependencies.tokio]
-version = "1"
+version = "0.2"
 features = ["full"]
 
 [dev-dependencies.tokio-test]
-version = "0.4"
+version = "0.2"
 
 [dev-dependencies.trybuild]
 version = "1"
