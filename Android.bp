@@ -22,7 +22,7 @@ rust_defaults {
     name: "async-stream_test_defaults",
     crate_name: "async_stream",
     cargo_env_compat: true,
-    cargo_pkg_version: "0.3.3",
+    cargo_pkg_version: "0.3.4",
     test_suites: ["general-tests"],
     auto_gen_config: true,
     edition: "2018",
@@ -30,6 +30,7 @@ rust_defaults {
         "libasync_stream",
         "libfutures_core",
         "libfutures_util",
+        "libpin_project_lite",
         "libtokio",
         "libtokio_test",
     ],
@@ -50,6 +51,16 @@ rust_test {
 }
 
 rust_test {
+    name: "async-stream_test_tests_spans_preserved",
+    defaults: ["async-stream_test_defaults"],
+    host_supported: true,
+    srcs: ["tests/spans_preserved.rs"],
+    test_options: {
+        unit_test: true,
+    },
+}
+
+rust_test {
     name: "async-stream_test_tests_try_stream",
     defaults: ["async-stream_test_defaults"],
     host_supported: true,
@@ -64,11 +75,12 @@ rust_library {
     host_supported: true,
     crate_name: "async_stream",
     cargo_env_compat: true,
-    cargo_pkg_version: "0.3.3",
+    cargo_pkg_version: "0.3.4",
     srcs: ["src/lib.rs"],
     edition: "2018",
     rustlibs: [
         "libfutures_core",
+        "libpin_project_lite",
     ],
     proc_macros: ["libasync_stream_impl"],
     apex_available: [
