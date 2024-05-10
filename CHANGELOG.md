@@ -1,3 +1,13 @@
+# 0.3.5
+
+* Update to syn 2.0 (#93)
+* Bump MSRV to 1.56 (#97)
+
+# 0.3.4
+
+* Improve support for `#[track_caller]` (#72)
+* Reduce unsafe code (#77)
+
 # 0.3.3
 
 * Fix a bug where `yield` and `?` cannot be used on the same line (#66)

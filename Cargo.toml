@@ -11,19 +11,23 @@
 
 [package]
 edition = "2018"
-rust-version = "1.45"
+rust-version = "1.56"
 name = "async-stream"
-version = "0.3.3"
+version = "0.3.5"
 authors = ["Carl Lerche <me@carllerche.com>"]
 description = "Asynchronous streams using async & await notation"
+readme = "README.md"
 license = "MIT"
 repository = "https://github.com/tokio-rs/async-stream"
 
 [dependencies.async-stream-impl]
-version = "=0.3.3"
+version = "=0.3.5"
 
 [dependencies.futures-core]
 version = "0.3"
+
+[dependencies.pin-project-lite]
+version = "0.2"
 
 [dev-dependencies.futures-util]
 version = "0.3"
@@ -34,9 +38,6 @@ version = "1"
 [dev-dependencies.tokio]
 version = "1"
 features = ["full"]
-
-[dev-dependencies.tokio-test]
-version = "0.4"
 
 [dev-dependencies.trybuild]
 version = "1"
